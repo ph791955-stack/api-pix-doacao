@@ -1,12 +1,14 @@
 const express = require('express');
 const cors = require('cors');
-app.use(cors());
 const axios = require('axios');
 const QRCode = require('qrcode');
 
 const app = express();
+
+app.use(cors());
 app.use(express.json());
 app.use(express.static(__dirname));
+
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -65,6 +67,7 @@ app.post('/gerar-pix', async (req, res) => {
     }
 });
 
-app.listen(3000, () => {
-    console.log('Servidor rodando em http://localhost:3000');
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Servidor rodando na porta ${PORT}`);
 });
