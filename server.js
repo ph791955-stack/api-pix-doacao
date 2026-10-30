@@ -1,4 +1,6 @@
 const express = require('express');
+const cors = require('cors');
+app.use(cors());
 const axios = require('axios');
 const QRCode = require('qrcode');
 
